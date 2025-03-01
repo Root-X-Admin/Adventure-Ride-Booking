@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adventure Booking</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body style="background: url('{{ url_for('static', filename='images/OIP.png') }}') no-repeat center center fixed; background-size: cover;">
+
+
+    <!-- Sticky Navbar -->
+    <nav class="navbar">
+        <div class="logo">Adventure Rides</div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="{{ url_for('app_routes.activity_listing') }}">Activities</a></li>
+            <li><a href="#">Offers</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Fancy Search Bar (Fixed at the Top) -->
+    <div class="search-container">
+        <form method="GET" action="{{ url_for('app_routes.home') }}" class="search-bar">
+            <input type="text" name="search" placeholder="🔍 Search adventure rides, locations, or dates..." required>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <h1>Experience the Thrill of Adventure!</h1>
+        <p>Find the best adventure rides and activities near you.</p>
+    </header>
+
+    <!-- Popular Activities Section -->
+    <section class="popular-activities">
+        <h2>Popular Activities</h2>
+        <div class="activities-container">
+            {% for activity in activities %}
+            <div class="activity-card">
+                <img src="{{ activity.image_url }}" alt="{{ activity.name }}">
+                <h3>{{ activity.name }}</h3>
+                <p>{{ activity.location }}</p>
+                <p>Starting from ${{ activity.price }}</p>
+                <a href="{{ url_for('app_routes.activity_detail', activity_id=activity.id) }}" class="btn">View Details</a>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Promotional Offers -->
+    <section class="offers">
+        <h2>Special Offers & Discounts</h2>
+        <div class="offers-container">
+            <div class="offer-card">
+                <h3>20% Off on Rafting</h3>
+                <p>Book now and save on your next adventure!</p>
+            </div>
+            <div class="offer-card">
+                <h3>Buy 1 Get 1 on Ziplining</h3>
+                <p>Bring a friend for free!</p>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
