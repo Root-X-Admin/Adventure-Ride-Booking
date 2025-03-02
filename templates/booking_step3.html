@@ -1,0 +1,14 @@
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<form method="POST">
+    <label>Select Payment Method:</label>
+    <select name="payment_method" required>
+        <option value="Credit Card">Credit Card</option>
+        <option value="Debit Card">Debit Card</option>
+        <option value="UPI">UPI</option>
+        <option value="Wallet">Wallet</option>
+    </select>
+
+    <button type="submit">Pay Now</button>
+</form>

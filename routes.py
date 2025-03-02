@@ -1,7 +1,8 @@
-from flask import Blueprint, render_template, request
-from models import Activity
+from flask import Blueprint, render_template, request, redirect, url_for, flash
+from models import Activity, Booking, db
 
 # Define Blueprint
+booking_bp = Blueprint('booking', __name__)
 app_routes = Blueprint('app_routes', __name__)
 
 @app_routes.route('/')
@@ -38,3 +39,59 @@ def activity_listing():
 def activity_detail(activity_id):
     activity = Activity.query.get_or_404(activity_id)  # Fetch activity from database
     return render_template('activity_detail.html', activity=activity)
+
+# Step 1: Select Date & Time
+@booking_bp.route('/book/<int:activity_id>', methods=['GET', 'POST'])
+def book_activity(activity_id):
+    if request.method == 'POST':
+        date = request.form['date']
+        time_slot = request.form['time_slot']
+        return redirect(url_for('booking.participant_details', activity_id=activity_id, date=date, time_slot=time_slot))
+    
+    return render_template('booking_step1.html', activity_id=activity_id)
+
+# Step 2: Enter Participant Details
+@booking_bp.route('/book/participants/<int:activity_id>', methods=['GET', 'POST'])
+def participant_details(activity_id):
+    date = request.args.get('date')
+    time_slot = request.args.get('time_slot')
+
+    if request.method == 'POST':
+        name = request.form['name']
+        age = request.form['age']
+        contact = request.form['contact']
+        participants = request.form['participants']
+        
+        return redirect(url_for('booking.payment', activity_id=activity_id, name=name, age=age, contact=contact, participants=participants, date=date, time_slot=time_slot))
+
+    return render_template('booking_step2.html', activity_id=activity_id, date=date, time_slot=time_slot)
+
+# Step 3: Payment Page
+@booking_bp.route('/book/payment/<int:activity_id>', methods=['GET', 'POST'])
+def payment(activity_id):
+    name = request.args.get('name')
+    age = request.args.get('age')
+    contact = request.args.get('contact')
+    participants = request.args.get('participants')
+    date = request.args.get('date')
+    time_slot = request.args.get('time_slot')
+
+    if request.method == 'POST':
+        payment_method = request.form['payment_method']
+        
+        new_booking = Booking(
+            activity_id=activity_id, name=name, age=age, contact=contact,
+            date=date, time_slot=time_slot, participants=participants, payment_method=payment_method
+        )
+        db.session.add(new_booking)
+        db.session.commit()
+
+        return redirect(url_for('booking.confirmation', booking_id=new_booking.id))
+
+    return render_template('booking_step3.html', activity_id=activity_id, name=name, age=age, contact=contact, participants=participants, date=date, time_slot=time_slot)
+
+# Step 4: Confirmation Page
+@booking_bp.route('/book/confirmation/<int:booking_id>')
+def confirmation(booking_id):
+    booking = Booking.query.get(booking_id)
+    return render_template('booking_step4.html', booking=booking)

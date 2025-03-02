@@ -67,7 +67,7 @@
 
         <!-- Booking Button -->
         <div class="booking">
-            <a href="#" class="btn">Book Now</a>
+            <a href="{{ url_for('booking.book_activity', activity_id=activity.id) }}" class="btn">Book Now</a>
         </div>
 
     </section>

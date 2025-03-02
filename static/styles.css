@@ -46,15 +46,17 @@ body {
 
 /* Search Bar */
 .search-container {
+    width: 100%;
     display: flex;
     justify-content: center;
-    margin: 20px 0;
+    margin-top: 20px;
 }
 
 .search-bar {
+    width: 60%; /* Adjust this to make it larger */
+    max-width: 600px; /* Ensures it doesn't get too wide on larger screens */
     display: flex;
     align-items: center;
-    width: 50%;
     background: white;
     border-radius: 25px;
     padding: 5px 15px;
@@ -64,26 +66,25 @@ body {
 .search-bar input {
     width: 100%;
     border: none;
-    outline: none;
     padding: 10px;
     font-size: 16px;
-    border-radius: 25px;
+    outline: none;
 }
 
 .search-bar button {
-    background: #ffcc00;
+    background: #28a745;
+    color: white;
     border: none;
     padding: 10px 20px;
-    font-size: 16px;
-    color: black;
     border-radius: 25px;
     cursor: pointer;
-    transition: 0.3s;
+    font-size: 16px;
 }
 
 .search-bar button:hover {
-    background: #ffaa00;
+    background: #218838;
 }
+
 
 /* Hero Section */
 .hero {
@@ -159,31 +160,48 @@ body {
 /* Filter Form */
 .filter-form {
     display: flex;
-    justify-content: center;
-    gap: 10px;
-    padding: 20px;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px 20px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
 }
 
 .filter-form select,
 .filter-form input {
     padding: 8px;
-    font-size: 16px;
-    border-radius: 5px;
     border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    flex: 1;
+    min-width: 150px;
+    margin-right: 10px;
+}
+
+.filter-form input {
+    flex: 2;
 }
 
 .filter-form button {
-    padding: 8px 15px;
-    font-size: 16px;
-    background: #ffcc00;
+    background: #28a745;
+    color: white;
     border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: 0.3s;
+    font-size: 16px;
+    white-space: nowrap;
 }
 
 .filter-form button:hover {
-    background: #ffaa00;
+    background: #218838;
 }
+
 
 /* Offers Section */
 .offers {
@@ -248,4 +266,35 @@ body {
 
 .booking .btn:hover {
     background: #e65c00;
+}
+
+form {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+input, select {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background: #28a745;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: #218838;
 }
