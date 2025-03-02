@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ activity.name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body style="background: url('{{ url_for('static', filename='images/activity_detail.jpg') }}') no-repeat center center fixed; background-size: cover;">
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">Adventure Rides</div>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('app_routes.home') }}">Home</a></li>
+            <li><a href="{{ url_for('app_routes.activity_listing') }}">Activities</a></li>
+            <li><a href="#">Offers</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Activity Detail Section -->
+    <section class="activity-detail">
+        <h1>{{ activity.name }}</h1>
+        <img src="{{ activity.image_url }}" alt="{{ activity.name }}">
+
+        <div class="description">
+            <h2>About this Activity</h2>
+            <p>{{ activity.description }}</p>
+        </div>
+
+        <div class="details">
+            <h2>Details</h2>
+            <p><strong>Location:</strong> {{ activity.location }}</p>
+            <p><strong>Duration:</strong> {{ activity.duration }} hours</p>
+            <p><strong>Difficulty:</strong> {{ activity.difficulty }}</p>
+            <p><strong>Safety Measures:</strong> {{ activity.safety_measures }}</p>
+            <p><strong>What to Bring:</strong> {{ activity.what_to_bring }}</p>
+        </div>
+
+        <div class="gallery">
+            <h2>Gallery</h2>
+            <img src="{{ activity.image_url }}" alt="Gallery Image">
+            <!-- Add more images/videos dynamically -->
+        </div>
+
+        <div class="pricing">
+            <h2>Price Breakdown</h2>
+            <p><strong>Base Price:</strong> ${{ activity.price }}</p>
+            <p><strong>Additional Costs:</strong> {{ activity.additional_costs }}</p>
+        </div>
+
+        <div class="availability">
+            <h2>Availability Calendar</h2>
+            <!-- Availability Calendar Integration -->
+        </div>
+
+        <div class="reviews">
+            <h2>Reviews</h2>
+            {% for review in activity.reviews %}
+                <div class="review">
+                    <p><strong>{{ review.user }}</strong> rated ⭐ {{ review.rating }}/5</p>
+                    <p>{{ review.comment }}</p>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Booking Button -->
+        <div class="booking">
+            <a href="#" class="btn">Book Now</a>
+        </div>
+
+    </section>
+
+</body>
+</html>

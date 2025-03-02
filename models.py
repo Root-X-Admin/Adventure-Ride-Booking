@@ -15,7 +15,11 @@ class Activity(db.Model):
 
 class Booking(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_name = db.Column(db.String(100), nullable=False)
     activity_id = db.Column(db.Integer, db.ForeignKey('activity.id'), nullable=False)
-    date = db.Column(db.Date, nullable=False)
-    status = db.Column(db.String(20), default="Confirmed")
+    name = db.Column(db.String(100), nullable=False)
+    age = db.Column(db.Integer, nullable=False)
+    contact = db.Column(db.String(20), nullable=False)
+    date = db.Column(db.String(20), nullable=False)
+    time_slot = db.Column(db.String(20), nullable=False)
+    participants = db.Column(db.Integer, nullable=False)
+    payment_method = db.Column(db.String(50), nullable=False)

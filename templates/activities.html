@@ -59,7 +59,7 @@
                     <p>{{ activity.description }}</p>
                     <p>Price: ${{ activity.price }}</p>
                     <p>⭐ {{ activity.rating }}/5</p>
-                    <a href="#">View Details</a>
+                    <a href="{{ url_for('app_routes.activity_detail', activity_id=activity.id) }}">View Details</a>
                 </div>
             {% endfor %}
         {% else %}

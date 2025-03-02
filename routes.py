@@ -33,3 +33,8 @@ def activity_listing():
     print("Fetched activities:", activities)  # Debugging line
 
     return render_template('activities.html', activities=activities)
+
+@app_routes.route('/activity/<int:activity_id>')
+def activity_detail(activity_id):
+    activity = Activity.query.get_or_404(activity_id)  # Fetch activity from database
+    return render_template('activity_detail.html', activity=activity)
