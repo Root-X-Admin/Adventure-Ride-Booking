@@ -95,3 +95,14 @@ def payment(activity_id):
 def confirmation(booking_id):
     booking = Booking.query.get(booking_id)
     return render_template('booking_step4.html', booking=booking)
+
+
+@app_routes.route('/contact', methods=['GET', 'POST'])
+def contact():
+    if request.method == 'POST':
+        name = request.form.get('name')
+        email = request.form.get('email')
+        message = request.form.get('message')
+        print(f"New Contact Form Submission: {name} ({email}) - {message}")
+        flash("Your message has been submitted!", "success")
+    return render_template('contact.html')

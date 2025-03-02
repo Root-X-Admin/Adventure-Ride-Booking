@@ -1,0 +1,19 @@
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='modify_booking.css') }}">
+</head>
+<h2>Modify Booking</h2>
+
+<form method="POST">
+    <label>Select New Date:</label>
+    <input type="date" name="date" value="{{ booking.date }}" required>
+
+    <label>Select New Time Slot:</label>
+    <select name="time_slot" required>
+        <option value="09:00 AM - 11:00 AM">09:00 AM - 11:00 AM</option>
+        <option value="12:00 PM - 02:00 PM">12:00 PM - 02:00 PM</option>
+        <option value="03:00 PM - 05:00 PM">03:00 PM - 05:00 PM</option>
+    </select>
+
+    <button type="submit">Update Booking</button>
+</form>
+

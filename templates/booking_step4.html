@@ -11,10 +11,10 @@
 <p><strong>Date:</strong> {{ booking.date }}</p>
 <p><strong>Time Slot:</strong> {{ booking.time_slot }}</p>
 <p><strong>Payment Method:</strong> {{ booking.payment_method }}</p>
-<p>You will be redirected to homepage in 5 seconds</p>
+<p>You will be redirected to your dashboard in 5 seconds</p>
 
 <script>
     setTimeout(function() {
-        window.location.href = "{{ url_for('app_routes.home') }}";
+        window.location.href = "{{ url_for('dashboard.user_dashboard') }}";
     }, 5000); // Redirect after 5 seconds (5000ms)
 </script>

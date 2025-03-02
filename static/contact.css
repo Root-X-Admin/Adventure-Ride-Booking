@@ -1,0 +1,182 @@
+/* General Contact Page Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+/* Header Styling */
+h2 {
+    margin-top: 20px;
+    color: #333;
+    font-size: 28px;
+}
+
+/* Emergency Helpline */
+.helpline {
+    background: rgba(255, 204, 0, 0.9);
+    padding: 15px;
+    margin: 20px auto;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+/* FAQs Section */
+.faq-container {
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.faq-container ul {
+    list-style: none;
+    padding: 0;
+}
+
+.faq-container li {
+    background: white;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.faq-container li strong {
+    display: block;
+    font-size: 18px;
+    color: #007bff;
+}
+
+.faq-container li p {
+    margin-top: 8px;
+    font-size: 16px;
+    color: #555;
+}
+
+/* Live Chat Button */
+.live-chat-btn {
+    background: #007bff;
+    color: white;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+.live-chat-btn:hover {
+    background: #0056b3;
+}
+
+/* Contact Form */
+.contact-form {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.contact-form label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #444;
+}
+
+.contact-form input, 
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-top: 5px;
+    font-size: 16px;
+}
+
+.contact-form textarea {
+    resize: none;
+}
+
+.contact-form button {
+    width: 100%;
+    background: #28a745;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 15px;
+    transition: 0.3s;
+}
+
+.contact-form button:hover {
+    background: #218838;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #33333379;
+    padding: 15px 30px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar .logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Move links to the right */
+.navbar .nav-links {
+    list-style: none;
+    display: flex;
+    margin-left: auto;
+}
+
+.navbar .nav-links li {
+    margin: 0 15px;
+}
+
+.navbar .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.navbar .nav-links a:hover {
+    color: #ffcc00;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .faq-container, .contact-form {
+        max-width: 90%;
+    }
+
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .navbar .nav-links {
+        margin-left: 0;
+        flex-direction: column;
+        gap: 10px;
+    }
+}

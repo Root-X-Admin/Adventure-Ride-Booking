@@ -1,0 +1,20 @@
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='invoice.css') }}">
+</head>
+
+<div class="invoice-container">
+    <h2>Booking Invoice</h2>
+
+    <div class="invoice-details">
+        <p><strong>Booking ID:</strong> {{ booking.id }}</p>
+        <p><strong>Activity ID:</strong> {{ booking.activity_id }}</p>
+        <p><strong>Name:</strong> {{ booking.name }}</p>
+        <p><strong>Date:</strong> {{ booking.date }}</p>
+        <p><strong>Time Slot:</strong> {{ booking.time_slot }}</p>
+        <p><strong>Participants:</strong> {{ booking.participants }}</p>
+        <p><strong>Payment Method:</strong> {{ booking.payment_method }}</p>
+        <p><strong>Status:</strong> {{ booking.status }}</p>
+    </div>
+
+    <button class="download-btn" onclick="window.print()">Download Invoice</button>
+</div>

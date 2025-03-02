@@ -23,3 +23,10 @@ class Booking(db.Model):
     time_slot = db.Column(db.String(20), nullable=False)
     participants = db.Column(db.Integer, nullable=False)
     payment_method = db.Column(db.String(50), nullable=False)
+    status = db.Column(db.String(20), default="Confirmed")  # Confirmed, Completed, Cancelled
+    rewards = db.Column(db.Integer, default=0)  # Reward points earned
+
+    def mark_completed(self):
+        """Marks the booking as completed and assigns reward points."""
+        self.status = "Completed"
+        self.rewards = self.participants * 10  # Example: 10 points per participant
