@@ -12,62 +12,54 @@
         }
     </script>
 </head>
-<body>
-     <!-- Sticky Navbar -->
-     <nav class="navbar">
-        <div class="logo">Adventure Rides</div>
-        <ul class="nav-links">
-            <li><a href="{{ url_for('app_routes.home') }}">Home</a></li>
-            <li><a href="{{ url_for('app_routes.activity_listing') }}">Activities</a></li>
-            <li><a href="#">Offers</a></li>
-            <li><a href="{{ url_for('app_routes.contact') }}">Contact</a></li>
-        </ul>
-    </nav>
+<body style="background: url('{{ url_for('static', filename='images/contact.jpg') }}') no-repeat center center fixed; background-size: cover;">
+    {% include 'navbar.html' %}
     
-    <h2>Contact & Support</h2>
+    <div class="contact-section">
+        <h2>Contact & Support</h2>
 
-    <!-- Emergency Helpline -->
-    <div class="helpline">
-        <h3>Emergency Helpline</h3>
-        <p><strong>📞 +1-800-ADVENTURE</strong> (24/7 support during activities)</p>
+        <!-- Emergency Helpline -->
+        <div class="contact-helpline">
+            <h3>Emergency Helpline</h3>
+            <p><strong>📞 +1-800-ADVENTURE</strong> (24/7 support during activities)</p>
+        </div>
+
+        <!-- FAQs Section -->
+        <h3>Frequently Asked Questions</h3>
+        <ul class="faq-list">
+            <li>
+                <strong onclick="toggleFAQ('faq1')" style="cursor: pointer;">❓ How do I modify my booking?</strong>
+                <p id="faq1" class="faq-answer" style="display: none;">Go to your dashboard and click "Modify" next to the booking.</p>
+            </li>
+            <li>
+                <strong onclick="toggleFAQ('faq2')" style="cursor: pointer;">❓ What is the refund policy?</strong>
+                <p id="faq2" class="faq-answer" style="display: none;">Cancellations 48 hours before the activity get a full refund.</p>
+            </li>
+            <li>
+                <strong onclick="toggleFAQ('faq3')" style="cursor: pointer;">❓ What safety measures are in place?</strong>
+                <p id="faq3" class="faq-answer" style="display: none;">All activities follow strict safety guidelines with trained instructors.</p>
+            </li>
+        </ul>
+
+        <!-- Live Chat
+        <h3>Live Chat</h3>
+        <p>For immediate assistance, click below to start a live chat.</p>
+        <button class="live-chat-btn" onclick="alert('Live chat coming soon!')">Start Live Chat</button> -->
+
+        <!-- Contact Form -->
+        <h3>Contact Us</h3>
+        <form method="POST" class="contact-form">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Your Message:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
     </div>
-
-    <!-- FAQs Section -->
-    <h3>Frequently Asked Questions</h3>
-    <ul>
-        <li>
-            <strong onclick="toggleFAQ('faq1')" style="cursor: pointer;">❓ How do I modify my booking?</strong>
-            <p id="faq1" style="display: none;">Go to your dashboard and click "Modify" next to the booking.</p>
-        </li>
-        <li>
-            <strong onclick="toggleFAQ('faq2')" style="cursor: pointer;">❓ What is the refund policy?</strong>
-            <p id="faq2" style="display: none;">Cancellations 48 hours before the activity get a full refund.</p>
-        </li>
-        <li>
-            <strong onclick="toggleFAQ('faq3')" style="cursor: pointer;">❓ What safety measures are in place?</strong>
-            <p id="faq3" style="display: none;">All activities follow strict safety guidelines with trained instructors.</p>
-        </li>
-    </ul>
-
-    <!-- Live Chat -->
-    <h3>Live Chat</h3>
-    <p>For immediate assistance, click below to start a live chat.</p>
-    <button onclick="alert('Live chat coming soon!')">Start Live Chat</button>
-
-    <!-- Contact Form -->
-    <h3>Contact Us</h3>
-    <form method="POST">
-        <label for="name">Your Name:</label>
-        <input type="text" id="name" name="name" required>
-
-        <label for="email">Your Email:</label>
-        <input type="email" id="email" name="email" required>
-
-        <label for="message">Your Message:</label>
-        <textarea id="message" name="message" rows="4" required></textarea>
-
-        <button type="submit">Submit</button>
-    </form>
-
 </body>
 </html>

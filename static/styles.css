@@ -44,6 +44,11 @@ body {
     color: #ffcc00;
 }
 
+.navbar-text {
+    color: white;
+    font-size: 18px;
+}
+
 /* Search Bar */
 .search-container {
     width: 100%;
@@ -90,8 +95,9 @@ body {
 .hero {
     text-align: center;
     padding: 60px 20px;
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
+    /* background: rgba(0, 0, 0, 0.5); */
+    color: #000000;
+    text-shadow: 0 0 10px rgb(54, 161, 95), 0 0 20px rgb(35, 185, 55), 0 0 40px #00f;
 }
 
 .hero h1 {
@@ -103,36 +109,40 @@ body {
     font-size: 18px;
 }
 
-/* Activities Section */
+/* Popular Activities Section */
+.popular-activities {
+    padding: 40px;
+    text-align: center;
+}
+
+/* Activities Section - Flexbox for side-by-side cards */
 .activities {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 40px;
+    gap: 20px;  /* Adds space between cards */
 }
 
-/* .activities-page {
-    background: url("../images/activity.jpeg") no-repeat center center fixed;
-    background-size: cover;
-    min-height: 100vh;
-    padding: 20px;
-} */
-
+/* Activity Cards */
 .activity-card {
     background: white;
     border-radius: 10px;
     padding: 15px;
-    margin: 15px;
-    width: 300px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
+    width: 300px;  /* Fixed width for each card */
+    margin: 0;  /* Removed margin for more control using gap */
 }
 
+/* Activity Card Image */
 .activity-card img {
     width: 100%;
     border-radius: 10px;
+    height: 180px;  /* Fixed height to keep images consistent */
+    object-fit: cover;  /* Ensures images are scaled without distortion */
 }
 
+/* Activity Card Text Styling */
 .activity-card h3 {
     margin: 10px 0;
 }
@@ -142,6 +152,7 @@ body {
     color: gray;
 }
 
+/* Button Styling */
 .activity-card a {
     display: inline-block;
     margin-top: 10px;
@@ -156,6 +167,21 @@ body {
 .activity-card a:hover {
     background: #ffaa00;
 }
+
+/* Responsive Layout for Smaller Screens */
+@media (max-width: 768px) {
+    .activities {
+        justify-content: space-between;  /* Adjust spacing for medium screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .activities {
+        flex-direction: column;  /* Stack cards vertically on very small screens */
+        align-items: center;  /* Centers the cards */
+    }
+}
+
 
 /* Filter Form */
 .filter-form {

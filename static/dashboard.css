@@ -64,55 +64,106 @@ a:hover {
     }
 }
 
-/* Navbar */
-.navbar {
+/* cancel button */
+.cancel-btn {
+    background-color: #ff4d4d; /* Red color for cancel button */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.cancel-btn:hover {
+    background-color: #cc0000; /* Darker red on hover */
+}
+
+.cancel-btn:active {
+    transform: scale(0.95); /* Slight press effect */
+}
+
+/* modify button */
+.modify-btn {
+    background-color: #4CAF50; /* Green color for modify button */
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    display: inline-block;
+    transition: background 0.3s ease-in-out;
+}
+
+.modify-btn:hover {
+    background-color: #388E3C; /* Darker green on hover */
+}
+
+.modify-btn:active {
+    transform: scale(0.95); /* Slight press effect */
+}
+
+
+/* Past Activities Section */
+#past-activities-title {
+    color: #555;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+#past-activities-list {
+    list-style: none;
+    padding: 0;
+}
+
+.past-booking {
+    background: white;
+    padding: 12px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
+    text-align: left;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #33333379;
-    padding: 15px 30px;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
 }
 
-.navbar .logo {
-    color: white;
-    font-size: 24px;
+.activity-name {
     font-weight: bold;
+    font-size: 16px;
+    color: #333;
 }
 
-.navbar .nav-links {
-    list-style: none;
-    display: flex;
-    margin-left: auto;
+.booking-date {
+    font-size: 14px;
+    color: #666;
 }
 
-.navbar .nav-links li {
-    margin: 0 15px;
-}
-
-.navbar .nav-links a {
+.download-invoice-btn {
+    background-color: #007bff;
     color: white;
     text-decoration: none;
-    font-size: 18px;
-    transition: 0.3s;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
 }
 
-.navbar .nav-links a:hover {
-    color: #ffcc00;
+.download-invoice-btn:hover {
+    background-color: #0056b3;
+    text-decoration: none;
 }
 
-/* Responsive Navbar */
-@media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        text-align: center;
-    }
+.download-invoice-btn:active {
+    transform: scale(0.95);
+}
 
-    .navbar .nav-links {
-        margin-left: 0;
-        flex-direction: column;
-        gap: 10px;
-    }
+#no-past-activities {
+    text-align: center;
+    font-size: 16px;
+    color: #777;
 }

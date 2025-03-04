@@ -1,52 +1,50 @@
 <head>
     <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
 </head>
-    <!-- Sticky Navbar -->
-    <nav class="navbar">
-        <div class="logo">Adventure Rides</div>
-        <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="{{ url_for('app_routes.activity_listing') }}">Activities</a></li>
-            <li><a href="#">Offers</a></li>
-            <li><a href="#">Contact</a></li>
+
+<body style="background: url('{{ url_for('static', filename='images/activity.jpg') }}') no-repeat center center fixed; background-size: cover;">
+    {% include 'navbar.html' %}
+
+    <h2>Welcome, {{ current_user.username }}!</h2>
+    <a href="{{ url_for('app_routes.logout') }}">Logout</a>
+
+    <h3>Upcoming Rides</h3>
+    {% if upcoming_rides %}
+        <ul>
+            {% for booking in upcoming_rides %}
+                <li class="booking">
+                    <strong>{{ booking.activity_name }}</strong> - {{ booking.date }} at {{ booking.time_slot }}
+                    <a href="{{ url_for('booking.modify_booking', booking_id=booking.id) }}" class="modify-btn">Modify</a>
+                    <form action="{{ url_for('booking.cancel_booking', booking_id=booking.id) }}" method="POST" style="display:inline;">
+                        <button type="submit" class="cancel-btn" onclick="return confirm('Are you sure you want to cancel this booking?')">
+                            Cancel
+                        </button>
+                    </form>                                      
+                </li>
+            {% endfor %}
         </ul>
-    </nav>
+    {% else %}
+        <p>No upcoming rides.</p>
+    {% endif %}
 
-<h2>User Dashboard</h2>
+    <h3 id="past-activities-title">Past Activities</h3>
+        {% if past_activities %}
+            <ul id="past-activities-list">
+                {% for booking in past_activities %}
+                    <li class="booking past-booking">
+                        <strong class="activity-name">{{ booking.activity_name }}</strong> 
+                        <span class="booking-date">{{ booking.date }}</span>
+                        <a href="{{ url_for('app_routes.download_invoice', booking_id=booking.id) }}" class="download-invoice-btn">
+                            Download Invoice
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p id="no-past-activities">No past activities.</p>
+        {% endif %}
 
-<!-- Upcoming Rides -->
-<h3>Upcoming Rides</h3>
-{% if upcoming_rides %}
-    <ul>
-        {% for booking in upcoming_rides %}
-            <li class="booking">
-                <strong>{{ booking.name }}</strong> - {{ booking.date }} at {{ booking.time_slot }}
-                <a href="{{ url_for('dashboard.modify_booking', booking_id=booking.id) }}">Modify</a>
-                <a href="{{ url_for('dashboard.cancel_booking', booking_id=booking.id) }}">Cancel</a>
-            </li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>No upcoming rides.</p>
-{% endif %}
 
-<!-- Past Activities -->
-<h3>Past Activities</h3>
-{% if past_activities %}
-<p>Debug: {{ past_activities }}</p>
-
-    <ul>
-        {% for booking in past_activities %}
-            <li>
-                {{ booking.name }} - {{ booking.date }}
-                <a href="{{ url_for('dashboard.download_invoice', booking_id=booking.id) }}">Download Invoice</a>
-            </li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>No past activities.</p>
-{% endif %}
-
-<!-- Rewards Section -->
-<h3>Rewards Earned</h3>
-<p>You have <strong>{{ total_rewards }}</strong> points.</p>
+    <h3>Rewards Earned</h3>
+    <p>You have <strong>{{ total_rewards }}</strong> points.</p>
+</body>

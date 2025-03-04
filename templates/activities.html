@@ -5,20 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Activities</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='activities.css') }}">
     
 
 </head>
 <body style="background: url('{{ url_for('static', filename='images/activity.jpg') }}') no-repeat center center fixed; background-size: cover;">
-     <!-- Navbar -->
-     <nav class="navbar">
-        <div class="logo">Adventure Rides</div>
-        <ul class="nav-links">
-            <li><a href="{{ url_for('app_routes.home') }}">Home</a></li>
-            <li><a href="{{ url_for('app_routes.activity_listing') }}">Activities</a></li>
-            <li><a href="#">Offers</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-    </nav>
+     {% include 'navbar.html' %}
 
     <!-- Filters -->
     <form method="GET" action="{{ url_for('app_routes.activity_listing') }}" class="filter-form">
@@ -27,20 +19,21 @@
             <option value="Water">Water</option>
             <option value="Land">Land</option>
             <option value="Air">Air</option>
+            <option value="Snow">Snow</option>
         </select>
 
         <select name="difficulty">
             <option value="">All Difficulties</option>
-            <option value="Beginner">Beginner</option>
-            <option value="Intermediate">Intermediate</option>
-            <option value="Advanced">Advanced</option>
+            <option value="Easy">Easy</option>
+            <option value="Medium">Medium</option>
+            <option value="Hard">Hard</option>
         </select>
 
         <select name="price">
             <option value="">All Prices</option>
-            <option value="0-100">Under $100</option>
-            <option value="100-200">$100 - $200</option>
-            <option value="200-500">$200 - $500</option>
+            <option value="0-1000">Under ₹1000</option>
+            <option value="1000-5000">₹1000 - ₹5000</option>
+            <option value="5000-20000">₹5000 - ₹20000</option>
         </select>
 
         <input type="text" name="location" placeholder="Enter Location">
@@ -57,7 +50,7 @@
                     <h3>{{ activity.name }}</h3>
                     <p>{{ activity.location }}</p>
                     <p>{{ activity.description }}</p>
-                    <p>Price: ${{ activity.price }}</p>
+                    <p>Price: ₹{{ activity.price }}</p>
                     <p>⭐ {{ activity.rating }}/5</p>
                     <a href="{{ url_for('app_routes.activity_detail', activity_id=activity.id) }}">View Details</a>
                 </div>
