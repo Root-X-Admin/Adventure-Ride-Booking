@@ -24,8 +24,12 @@ Allows users to download invoices for completed rides.
 Bootstrap-powered design for both laptop and mobile views.
 
 Technology Stack:
+
 Backend: Flask (Python) with Flask-SQLAlchemy & Flask-Login
+
 Database: PostgreSQL
+
 Frontend: HTML, CSS (Bootstrap for responsiveness), JavaScript (optional for UI improvements)
+
 Authentication: OTP-based email verification
 
