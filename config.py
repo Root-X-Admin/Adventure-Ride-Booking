@@ -4,7 +4,7 @@ import psycopg2
 
 class Config:
     SECRET_KEY = 'your_secret_key_here'
-    SQLALCHEMY_DATABASE_URI = "postgresql://database_owner:npg_WmaM37DtPuoi@ep-floral-dust-a1bml0g0-pooler.ap-southeast-1.aws.neon.tech/database?sslmode=require"
+    SQLALCHEMY_DATABASE_URI = "postgresql://database_owner:npg_WmaM37DtPuoi@ep-floral-dust-a1bml0g0-pooler.ap-southeast-1.aws.neon.tech/database?sslmode=require&connect_timeout=20"
     # SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     # Flask-Mail Configuration
