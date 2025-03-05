@@ -1,20 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmed</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='booking_step4.css') }}">
 </head>
-<h2>Booking Confirmed!</h2>
-<p><strong>Booking ID:</strong> {{ booking.id }}</p>
-<p><strong>Activity ID:</strong> {{ booking.activity_id }}</p>
-<p><strong>Name:</strong> {{ booking.name }}</p>
-<p><strong>Age:</strong> {{ booking.age }}</p>
-<p><strong>Contact:</strong> {{ booking.contact }}</p>
-<p><strong>Participants:</strong> {{ booking.participants }}</p>
-<p><strong>Date:</strong> {{ booking.date }}</p>
-<p><strong>Time Slot:</strong> {{ booking.time_slot }}</p>
-<p><strong>Payment Method:</strong> {{ booking.payment_method }}</p>
-<p>You will be redirected to your dashboard in 5 seconds</p>
+<body>
 
-<script>
-    setTimeout(function() {
-        window.location.href = "{{ url_for('dashboard.user_dashboard') }}";
-    }, 5000); // Redirect after 5 seconds (5000ms)
-</script>
+    <div class="booking-card">
+        <h2>🌿 Booking Confirmed! 🌿</h2>
+        <p><strong>Booking ID:</strong> {{ booking.id }}</p>
+        <p><strong>Activity ID:</strong> {{ booking.activity_id }}</p>
+        <p><strong>Name:</strong> {{ booking.name }}</p>
+        <p><strong>Age:</strong> {{ booking.age }}</p>
+        <p><strong>Contact:</strong> {{ booking.contact }}</p>
+        <p><strong>Participants:</strong> {{ booking.participants }}</p>
+        <p><strong>Date:</strong> {{ booking.date }}</p>
+        <p><strong>Time Slot:</strong> {{ booking.time_slot }}</p>
+        <p><strong>Payment Method:</strong> {{ booking.payment_method }}</p>
+        <p>A confirmation email has been sent to your email! 📧</p>
+    
+        <!-- Styled Button Instead of <a> -->
+        <form action="{{ url_for('app_routes.user_dashboard') }}" method="get">
+            <button type="submit" class="confirmation-btn">Go to Dashboard</button>
+        </form>
+    </div>
+    
+</body>
+</html>

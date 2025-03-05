@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify OTP</title>
+</head>
+<body style="display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f4f4f4; font-family: Arial, sans-serif;">
+
+    <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); text-align: center; width: 350px;">
+        
+        <h2 style="color: #333; margin-bottom: 20px;">Verify OTP</h2>
+        
+        {% if request.args.get('otp_invalid') == '1' %}
+            <div id="otp-error" style="background-color: #ffdddd; color: #d8000c; padding: 10px; margin-bottom: 15px; border-radius: 5px;">
+                ❌ Invalid OTP! Please try again.
+            </div>
+            <script>
+                setTimeout(function() {
+                    document.getElementById('otp-error').style.display = 'none';
+                }, 30000);
+            </script>
+        {% endif %}
+
+        <form method="POST">
+            <label for="otp" style="display: block; margin-bottom: 10px; font-weight: bold; color: #555;">Enter OTP sent to your email:</label>
+            
+            <input type="text" name="otp" required 
+                style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px;">
+
+            <button type="submit" 
+                style="width: 100%; background-color: #28a745; color: white; border: none; padding: 12px; font-size: 16px; cursor: pointer; border-radius: 5px;">
+                ✅ Verify OTP
+            </button>
+        </form>
+
+    </div>
+
+</body>
+</html>
