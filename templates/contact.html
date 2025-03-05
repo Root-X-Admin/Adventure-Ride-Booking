@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact & Support</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='contact.css') }}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='contact.css') }}"> -->
+
     <script>
         function toggleFAQ(id) {
             var answer = document.getElementById(id);
@@ -19,55 +23,101 @@
             }
         }
     </script>
+
+    <style>
+        body {
+            background: url("../static/images/contact.jpg") no-repeat center center fixed;
+            background-size: cover;
+        }
+        /* Translucent Card Styling */
+        .translucent-card {
+            background: rgba(255, 255, 255, 0.664);
+            /* backdrop-filter: blur(10px); */
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .faq-answer {
+            display: none;
+        }
+
+        .faq-list li {
+            list-style: none;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .faq-list li strong {
+            display: block;
+            color: #007bff;
+        }
+
+        .faq-list li.active strong {
+            color: #0056b3;
+        }
+    </style>
 </head>
 <body>
+
     {% include 'navbar.html' %}
-    
-    <div class="contact-section">
-        <h2>Contact & Support</h2>
 
-        <!-- Emergency Helpline -->
-        <div class="contact-helpline">
-            <h3>Emergency Helpline</h3>
-            <p><strong>📞 +1-800-ADVENTURE</strong> (24/7 support during activities)</p>
+    <section class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="translucent-card">
+                    <h2 class="text-center mb-4">Contact & Support</h2>
+
+                    <!-- Emergency Helpline -->
+                    <div class="mb-4">
+                        <h3 class="text-primary">Emergency Helpline</h3>
+                        <p><strong>📞 +1-800-ADVENTURE</strong> (24/7 support during activities)</p>
+                    </div>
+
+                    <!-- FAQs Section -->
+                    <h3 class="text-primary">Frequently Asked Questions</h3>
+                    <ul class="faq-list p-0">
+                        <li>
+                            <strong onclick="toggleFAQ('faq1')" style="cursor: pointer;">❓ How do I modify my booking?</strong>
+                            <p id="faq1" class="faq-answer">Go to your dashboard and click "Modify" next to the booking.</p>
+                        </li>
+                        <li>
+                            <strong onclick="toggleFAQ('faq2')" style="cursor: pointer;">❓ What is the refund policy?</strong>
+                            <p id="faq2" class="faq-answer">Cancellations 48 hours before the activity get a full refund.</p>
+                        </li>
+                        <li>
+                            <strong onclick="toggleFAQ('faq3')" style="cursor: pointer;">❓ What safety measures are in place?</strong>
+                            <p id="faq3" class="faq-answer">All activities follow strict safety guidelines with trained instructors.</p>
+                        </li>
+                    </ul>
+
+                    <!-- Contact Form -->
+                    <h3 class="text-primary mt-4">Contact Us</h3>
+                    <form method="POST" class="contact-form">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Your Name:</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Your Email:</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Your Message:</label>
+                            <textarea id="message" name="message" rows="4" class="form-control" required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">Submit</button>
+                    </form>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <!-- FAQs Section -->
-        <h3>Frequently Asked Questions</h3>
-        <ul class="faq-list">
-            <li>
-                <strong onclick="toggleFAQ('faq1')" style="cursor: pointer;">❓ How do I modify my booking?</strong>
-                <p id="faq1" class="faq-answer" style="display: none;">Go to your dashboard and click "Modify" next to the booking.</p>
-            </li>
-            <li>
-                <strong onclick="toggleFAQ('faq2')" style="cursor: pointer;">❓ What is the refund policy?</strong>
-                <p id="faq2" class="faq-answer" style="display: none;">Cancellations 48 hours before the activity get a full refund.</p>
-            </li>
-            <li>
-                <strong onclick="toggleFAQ('faq3')" style="cursor: pointer;">❓ What safety measures are in place?</strong>
-                <p id="faq3" class="faq-answer" style="display: none;">All activities follow strict safety guidelines with trained instructors.</p>
-            </li>
-        </ul>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-        <!-- Live Chat
-        <h3>Live Chat</h3>
-        <p>For immediate assistance, click below to start a live chat.</p>
-        <button class="live-chat-btn" onclick="alert('Live chat coming soon!')">Start Live Chat</button> -->
-
-        <!-- Contact Form -->
-        <h3>Contact Us</h3>
-        <form method="POST" class="contact-form">
-            <label for="name">Your Name:</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="email">Your Email:</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="message">Your Message:</label>
-            <textarea id="message" name="message" rows="4" required></textarea>
-
-            <button type="submit" class="submit-btn">Submit</button>
-        </form>
-    </div>
 </body>
 </html>

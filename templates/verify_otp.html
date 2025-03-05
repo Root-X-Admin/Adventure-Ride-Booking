@@ -4,42 +4,98 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verify OTP</title>
-</head>
-<body style="display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f4f4f4; font-family: Arial, sans-serif;">
 
-    <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); text-align: center; width: 350px;">
-        
-        <h2 style="color: #333; margin-bottom: 20px;">Verify OTP</h2>
-        
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            font-family: Arial, sans-serif;
+        }
+
+        .otp-container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 350px;
+        }
+
+        .otp-container h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .form-control {
+            border-radius: 10px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .btn-custom {
+            background-color: #28a745;
+            color: white;
+            border-radius: 10px;
+            padding: 10px;
+            width: 100%;
+            transition: 0.3s;
+        }
+
+        .btn-custom:hover {
+            background-color: #218838;
+        }
+
+        .error {
+            background-color: #ffdddd;
+            color: #d8000c;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .info-text {
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="otp-container">
+        <h2>Verify OTP</h2>
+
         {% if request.args.get('otp_invalid') == '1' %}
-            <div id="otp-error" style="background-color: #ffdddd; color: #d8000c; padding: 10px; margin-bottom: 15px; border-radius: 5px;">
+            <div id="otp-error" class="error">
                 ❌ Invalid OTP! Please try again.
             </div>
             <script>
                 setTimeout(function() {
                     document.getElementById('otp-error').style.display = 'none';
-                }, 30000);
+                }, 3000);
             </script>
         {% endif %}
 
         <form method="POST">
-            <label for="otp" style="display: block; margin-bottom: 10px; font-weight: bold; color: #555;">Enter OTP sent to your email:</label>
+            <label for="otp" class="form-label">Enter OTP sent to your email:</label>
             
-            <input type="text" name="otp" required 
-                style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px;">
+            <input type="text" name="otp" id="otp" class="form-control" required>
+            
+            <p class="info-text">📩 If you don’t see the OTP, check your spam folder.</p>
 
-            <!-- Added Paragraph Here -->
-            <p style="color: #777; font-size: 14px; margin-bottom: 15px;">
-                📩 If you don’t see the OTP, check your spam folder.
-            </p>
-
-            <button type="submit" 
-                style="width: 100%; background-color: #28a745; color: white; border: none; padding: 12px; font-size: 16px; cursor: pointer; border-radius: 5px;">
-                ✅ Verify OTP
-            </button>
+            <button type="submit" class="btn btn-custom">✅ Verify OTP</button>
         </form>
-
     </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

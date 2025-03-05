@@ -4,65 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ activity.name }}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='activity_detail.css') }}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='activity_detail.css') }}"> -->
+    
+    <style>
+        body{
+            background: url("../static/images/activity_detail.jpg") no-repeat center center fixed;
+            background-size: cover;
+        }
+        /* Translucent Card Styling */
+        .translucent-card {
+            background: rgba(255, 255, 255, 0.8); /* White with 80% transparency */
+            /* backdrop-filter: blur(10px); Blurred background effect */
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
 </head>
 <body>
 
     {% include 'navbar.html' %}
 
     <!-- Activity Detail Section -->
-    <section class="activity-detail">
-        <h1>{{ activity.name }}</h1>
-        <img src="{{ activity.image_url }}" alt="{{ activity.name }}">
+    <section class="container mt-5">
+        <div class="row">
+            <!-- Activity Image -->
+            <div class="col-md-6">
+                <img src="{{ activity.image_url }}" class="img-fluid rounded shadow" alt="{{ activity.name }}">
+            </div>
 
-        <div class="description">
-            <h2>About this Activity</h2>
-            <p>{{ activity.description }}</p>
-        </div>
+            <!-- Activity Details with Translucent Card -->
+            <div class="col-md-6">
+                <div class="translucent-card">
+                    <h1 class="mb-3">{{ activity.name }}</h1>
+                    
+                    <h3 class="text-primary">About this Activity</h3>
+                    <p>{{ activity.description }}</p>
 
-        <div class="details">
-            <h2>Details</h2>
-            <p><strong>Location:</strong> {{ activity.location }}</p>
-            <!-- <p><strong>Duration:</strong> {{ activity.duration }} hours</p> -->
-            <p><strong>Difficulty:</strong> {{ activity.difficulty }}</p>
-            <!-- <p><strong>Safety Measures:</strong> {{ activity.safety_measures }}</p>
-            <p><strong>What to Bring:</strong> {{ activity.what_to_bring }}</p> -->
-        </div>
+                    <h3 class="text-primary">Details</h3>
+                    <p><strong>📍 Location:</strong> {{ activity.location }}</p>
+                    <p><strong>🎯 Difficulty:</strong> {{ activity.difficulty }}</p>
 
-        <div class="gallery">
-            <h2>Gallery</h2>
-            <img src="{{ activity.image_url }}" alt="Gallery Image">
-            <!-- Add more images/videos dynamically -->
-        </div>
+                    <h3 class="text-primary">Price Breakdown</h3>
+                    <p class="fs-4"><strong>💰 Price:</strong> ₹{{ activity.price }}</p>
 
-        <div class="pricing">
-            <h2>Price Breakdown</h2>
-            <p><strong>Price:</strong> ₹{{ activity.price }}</p>
-            <!-- <p><strong>Additional Costs:</strong> {{ activity.additional_costs }}</p> -->
-        </div>
-
-        <!-- <div class="availability">
-            <h2>Availability Calendar</h2>
-            <!-- Availability Calendar Integration -->
-        <!-- </div> --> 
-
-        <!-- <div class="reviews">
-            <h2>Reviews</h2>
-            {% for review in activity.reviews %}
-                <div class="review">
-                    <p><strong>{{ review.user }}</strong> rated ⭐ {{ review.rating }}/5</p>
-                    <p>{{ review.comment }}</p>
+                    <!-- Booking Button -->
+                    <div class="mt-4">
+                        <a href="{{ url_for('booking.book_activity', activity_id=activity.id) }}" class="btn btn-primary btn-lg w-100">Book Now</a>
+                    </div>
                 </div>
-            {% endfor %}
-        </div> -->
-
-        <!-- Booking Button -->
-        <div class="booking">
-            <a href="{{ url_for('booking.book_activity', activity_id=activity.id) }}" class="btn">Book Now</a>
+            </div>
         </div>
-
     </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
