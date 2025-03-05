@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='register.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h2>Register</h2>
+
+        <form method="POST">
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" value="{{ username or '' }}" required>
+            {% if errors.get('username') %}
+                <p class="error">{{ errors['username'] }}</p>
+            {% endif %}
+
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" value="{{ email or '' }}" required>
+            {% if errors.get('email') %}
+                <p class="error">{{ errors['email'] }}</p>
+            {% endif %}
+
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required>
+            {% if errors.get('password') %}
+                <p class="error">{{ errors['password'] }}</p>
+            {% endif %}
+
+            <button type="submit">Register</button>
+        </form>
+
+        <a href="{{ url_for('app_routes.login') }}">Already have an account? Login</a>
+    </div>
+
+    <style>
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+    </style>
+
+</body>
+</html>

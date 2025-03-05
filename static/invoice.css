@@ -35,7 +35,7 @@ h2 {
 }
 
 /* Navbar */
-.navbar {
+/* .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -70,4 +70,4 @@ h2 {
 
 .navbar .nav-links a:hover {
     color: #ffcc00;
-}
+} */
