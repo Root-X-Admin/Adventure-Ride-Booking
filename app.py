@@ -35,9 +35,6 @@ mail = Mail(app )
 def check_mail_config():
     return f"MAIL USERNAME: {current_app.config.get('MAIL_USERNAME')}"
 
-@app.teardown_appcontext
-def shutdown_session(exception=None):
-    db.session.remove()
 
 if __name__ == "__main__":
     with app.app_context():
