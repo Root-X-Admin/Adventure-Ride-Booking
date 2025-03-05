@@ -1,7 +1,7 @@
 # Adventure-Ride-Booking
 
 # Access website here: https://adventure-ride.onrender.com
-# Please wait 1 min for website to load
+# Please wait 1 min for website to load, try to refresh if error occurs
 
 Key Features:
 1. User Authentication & Authorization (OTP - based)
