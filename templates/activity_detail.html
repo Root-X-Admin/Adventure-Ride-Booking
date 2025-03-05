@@ -5,19 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ activity.name }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='activity_detail.css') }}">
 </head>
-<body style="background: url('{{ url_for('static', filename='images/activity_detail.jpg') }}') no-repeat center center fixed; background-size: cover;">
+<body>
 
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="logo">Adventure Rides</div>
-        <ul class="nav-links">
-            <li><a href="{{ url_for('app_routes.home') }}">Home</a></li>
-            <li><a href="{{ url_for('app_routes.activity_listing') }}">Activities</a></li>
-            <li><a href="#">Offers</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-    </nav>
+    {% include 'navbar.html' %}
 
     <!-- Activity Detail Section -->
     <section class="activity-detail">

@@ -62,7 +62,7 @@ button:hover {
     }
 }
 /* Navbar */
-.navbar {
+/* .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -101,7 +101,7 @@ button:hover {
 }
 
 /* Responsive Navbar */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     .navbar {
         flex-direction: column;
         text-align: center;
@@ -112,4 +112,4 @@ button:hover {
         flex-direction: column;
         gap: 10px;
     }
-}
+} */ 
