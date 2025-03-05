@@ -24,10 +24,10 @@
         <div class="details">
             <h2>Details</h2>
             <p><strong>Location:</strong> {{ activity.location }}</p>
-            <p><strong>Duration:</strong> {{ activity.duration }} hours</p>
+            <!-- <p><strong>Duration:</strong> {{ activity.duration }} hours</p> -->
             <p><strong>Difficulty:</strong> {{ activity.difficulty }}</p>
-            <p><strong>Safety Measures:</strong> {{ activity.safety_measures }}</p>
-            <p><strong>What to Bring:</strong> {{ activity.what_to_bring }}</p>
+            <!-- <p><strong>Safety Measures:</strong> {{ activity.safety_measures }}</p>
+            <p><strong>What to Bring:</strong> {{ activity.what_to_bring }}</p> -->
         </div>
 
         <div class="gallery">
@@ -38,16 +38,16 @@
 
         <div class="pricing">
             <h2>Price Breakdown</h2>
-            <p><strong>Base Price:</strong> ${{ activity.price }}</p>
-            <p><strong>Additional Costs:</strong> {{ activity.additional_costs }}</p>
+            <p><strong>Price:</strong> ₹{{ activity.price }}</p>
+            <!-- <p><strong>Additional Costs:</strong> {{ activity.additional_costs }}</p> -->
         </div>
 
-        <div class="availability">
+        <!-- <div class="availability">
             <h2>Availability Calendar</h2>
             <!-- Availability Calendar Integration -->
-        </div>
+        <!-- </div> --> 
 
-        <div class="reviews">
+        <!-- <div class="reviews">
             <h2>Reviews</h2>
             {% for review in activity.reviews %}
                 <div class="review">
@@ -55,7 +55,7 @@
                     <p>{{ review.comment }}</p>
                 </div>
             {% endfor %}
-        </div>
+        </div> -->
 
         <!-- Booking Button -->
         <div class="booking">

@@ -1,9 +1,13 @@
 import os
+import psycopg2
+from dotenv import load_dotenv
+
+load_dotenv()
 
 class Config:
     SECRET_KEY = 'your_secret_key_here'
-    SQLALCHEMY_DATABASE_URI = "sqlite:///database.db"
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SQLALCHEMY_DATABASE_URI = "postgresql://database_owner:npg_WmaM37DtPuoi@ep-floral-dust-a1bml0g0-pooler.ap-southeast-1.aws.neon.tech/database?sslmode=require"
+    # SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     # Flask-Mail Configuration
     MAIL_SERVER = "smtp.gmail.com"
@@ -13,3 +17,5 @@ class Config:
     MAIL_PASSWORD = 'yequetiqbwqyztyc'
     # MAIL_DEFAULT_SENDER = 'ashande29@gmail.com'
     MAIL_USE_SSL = True
+
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
