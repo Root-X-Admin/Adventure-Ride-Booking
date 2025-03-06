@@ -1,7 +1,7 @@
 from flask import Flask, current_app
 from flask_mail import Mail
 from config import Config
-from models import db, User  # Ensure User is imported here
+from models import db, User 
 from flask_login import LoginManager
 from flask_bcrypt import Bcrypt
 from __init__ import create_app
@@ -38,5 +38,5 @@ def check_mail_config():
 
 if __name__ == "__main__":
     with app.app_context():
-        db.create_all()  # Ensure tables exist
+        db.create_all()  
     app.run(debug=True)
