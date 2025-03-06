@@ -238,8 +238,8 @@ def register():
             errors['username'] = "Username must be at least 2 characters long."
         elif len(username) > 50:
             errors['username'] = "Username cannot exceed 50 characters."
-        elif not username.isalpha():
-            errors['username'] = "Username can only contain letters (A-Z, a-z)."
+        # elif not username.isalpha():
+        #     errors['username'] = "Username can only contain letters (A-Z, a-z)."
 
         # Validate password
         if not password:
