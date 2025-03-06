@@ -275,8 +275,18 @@ def register():
         session['email'] = email # Store email in session for verification
 
         # Send OTP email
-        msg = Message('Verify Your Account - OTP Inside', sender="your_email@example.com", recipients=[email])
-        msg.body = f"Your OTP is {otp}. It will expire in 5 minutes."
+        msg = Message(
+                    subject="Verify Your Account for Adventure Ride Booking- OTP Inside",
+                    sender="your_email@example.com",
+                    recipients=[email]
+                )
+        msg.body = (
+                    f"Hi {email},\n\n"
+                    "Your OTP for verification is: {otp}\n\n"
+                    "Please enter this code within 5 minutes to complete your registration.\n\n"
+                    "Best regards,\n"
+                    "Adventure Ride"
+                )
         mail.send(msg)
 
         flash('OTP sent to your email. Please verify to complete registration.', 'info')
