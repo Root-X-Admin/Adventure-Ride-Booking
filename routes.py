@@ -281,8 +281,8 @@ def register():
                     recipients=[email]
                 )
         msg.body = (
-                    f"Hi {email},\n\n"
-                    "Your OTP for verification is: {otp}\n\n"
+                    f"Hi {username},\n\n"
+                    f"Your OTP for verification is: {otp} \n\n"
                     "Please enter this code within 5 minutes to complete your registration.\n\n"
                     "Best regards,\n"
                     "Adventure Ride"
