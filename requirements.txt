@@ -7,3 +7,4 @@ email-validator
 gunicorn
 psycopg2
 psycopg2-binary
+dotenv
